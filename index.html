@@ -413,14 +413,15 @@
 
 </footer>
     </div>
-
-    <audio id="musik" loop><source src="LaguNikah.mp3" type="audio/mpeg"></audio>
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwGbkYRh5zMYmzxTix5R7iiPWlSNvrkpGsGQPhemtMIMk948B0x05SG6AQEJVQl0GzELA/exec';
+    // 1. SETTING UTAMA (Ganti idUndangan setiap ada pesanan baru)
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxYIouWgN8_HH1uYSFlHP7d9JqSIInqntBH3x5EuuM9nqv_d_AU5cczyzr4vmbo1pFToA/exec';
+    const idUndangan = 'devi-ehsan'; // <-- Cukup ganti ini saja untuk klien baru!
+    
     const audio = document.getElementById('musik');
     let isAutoScrolling = false;
 
-    // 1. Fungsi Kirim Ucapan
+    // 2. Fungsi Kirim Ucapan
     function kirimKeSheets() {
         const btn = document.getElementById('btn-kirim');
         const nama = document.getElementById('nama-input').value;
@@ -434,8 +435,16 @@
 
         fetch(scriptURL, {
             method: 'POST',
-            body: JSON.stringify({ "nama": nama, "ucapan": ucapan, "kehadiran": hadir })
+            mode: 'no-cors',
+            body: JSON.stringify({ 
+                "nama": nama, 
+                "ucapan": ucapan, 
+                "kehadiran": hadir,
+                "tujuan": idUndangan
+                       
+            })
         })
+
         .then(res => {
             alert("Terima kasih atas ucapannya!");
             btn.disabled = false;
@@ -452,13 +461,17 @@
         });
     }
 
-    // 2. Fungsi Muat Ucapan (Tanpa Double)
+    // 3. Fungsi Muat Ucapan
     function muatUcapan() {
-        fetch(scriptURL)
+        fetch(scriptURL + "?tujuan=" + idUndangan)
         .then(res => res.json())
         .then(data => {
             const wadah = document.getElementById('daftar-ucapan');
             wadah.innerHTML = ""; 
+            if (data.length === 0) {
+                wadah.innerHTML = "<p class='text-[10px] text-center text-stone-400'>Belum ada ucapan.</p>";
+                return;
+            }
             data.reverse().forEach(row => {
                 const item = `
                     <div class="bg-stone-50 p-4 rounded-2xl border-l-4 border-amber-700 shadow-sm mb-4">
@@ -474,7 +487,7 @@
         .catch(err => console.error("Gagal memuat:", err));
     }
 
-    // 3. Fungsi Navigasi & Nama Tamu
+    // 4. Fungsi Navigasi & Nama Tamu
     function ambilNamaTamu() {
         const urlParams = new URLSearchParams(window.location.search);
         const nama = urlParams.get('to');
@@ -499,35 +512,24 @@
         else { audio.pause(); btn.classList.remove('spinning'); }
     }
 
-  function salinTeks(nomor, label) {
-    // Cara Modern
-    if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(nomor).then(() => {
-            alert("Berhasil menyalin " + label + ": " + nomor);
-        }).catch(err => {
-            fallbackSalin(nomor, label);
-        });
-    } else {
-        // Cara Lama (untuk HP/Browser jadul)
-        fallbackSalin(nomor, label);
+    function salinTeks(nomor, label) {
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(nomor).then(() => {
+                alert("Berhasil menyalin " + label + ": " + nomor);
+            }).catch(err => { fallbackSalin(nomor, label); });
+        } else { fallbackSalin(nomor, label); }
     }
-}
 
-function fallbackSalin(text, label) {
-    const textArea = document.createElement("textarea");
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.select();
-    try {
+    function fallbackSalin(text, label) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
         document.execCommand('copy');
         alert("Berhasil menyalin " + label + ": " + text);
-    } catch (err) {
-        alert("Gagal menyalin, silakan salin manual.");
+        document.body.removeChild(textArea);
     }
-    document.body.removeChild(textArea);
-}
 
-    // 5. Auto Scroll Logic
     function toggleAutoScroll() {
         isAutoScrolling = !isAutoScrolling;
         const icon = document.getElementById('scroll-icon');
@@ -546,13 +548,7 @@ function fallbackSalin(text, label) {
         }
     }
 
-    window.addEventListener('touchstart', () => {
-        isAutoScrolling = false;
-        const icon = document.getElementById('scroll-icon');
-        if(icon) icon.classList.replace('fa-pause', 'fa-play');
-    });
-
-    // 6. Countdown
+    // 5. Countdown (Rara & Adi 15 April 2026)
     const target = new Date("April 15, 2026 08:00:00").getTime();
     setInterval(() => {
         const sisa = target - new Date().getTime();
@@ -562,7 +558,6 @@ function fallbackSalin(text, label) {
         document.getElementById("seconds").innerText = Math.floor((sisa % (1000 * 60)) / 1000);
     }, 1000);
 
-    // 7. Reveal Animation & Lightbox
     function scrollReveal() {
         const reveals = document.querySelectorAll(".reveal");
         reveals.forEach(el => {
@@ -583,3 +578,5 @@ function fallbackSalin(text, label) {
 
   </body>
 </html>
+
+    <audio id="musik" loop><source src="LaguNikah.mp3" type="audio/mpeg"></audio>
