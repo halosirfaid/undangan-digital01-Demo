@@ -220,15 +220,27 @@
 
         <div class="grid gap-6 max-w-sm mx-auto">
             <div class="bg-white p-6 rounded-3xl shadow-lg border-t-4 border-amber-700">
-                <i class="fa-solid fa-ring text-amber-700 mb-3 text-xl"></i>
-                <h3 class="font-bold text-amber-700 mb-1 tracking-widest text-sm">AKAD NIKAH</h3>
-               <p id="akad-jam" class="text-xs text-stone-600 font-bold mb-1"></p>
-                <p id="akad-tempat" class="text-[11px] text-stone-500 mb-4 leading-relaxed"></p>
-                  
-              <a id="akad-maps" href="#" target="_blank" class="inline-block bg-amber-700 text-white px-6 py-2 rounded-full text-[9px] font-bold shadow-md">
-                    <i class="fa-solid fa-location-dot mr-1"></i> LIHAT LOKASI
-                </a>
-            </div>
+    <i class="fa-solid fa-ring text-amber-700 mb-3 text-xl"></i>
+
+    <h3 class="font-bold text-amber-700 mb-1 tracking-widest text-sm">
+        AKAD NIKAH
+    </h3>
+
+    <!-- TAMBAHAN BARU -->
+    <p id="akad-hari" class="text-xs font-bold text-stone-700"></p>
+
+    <p id="akad-tanggal" class="text-[11px] text-stone-500 mb-2"></p>
+
+    <!-- YANG SUDAH ADA -->
+    <p id="akad-jam" class="text-xs text-stone-600 font-bold mb-1"></p>
+
+    <p id="akad-tempat" class="text-[11px] text-stone-500 mb-4 leading-relaxed"></p>
+
+    <a id="akad-maps" href="#" target="_blank" class="inline-block bg-amber-700 text-white px-6 py-2 rounded-full text-[9px] font-bold shadow-md">
+        <i class="fa-solid fa-location-dot mr-1"></i>
+        LIHAT LOKASI
+    </a>
+</div>
 
             <div class="bg-white p-6 rounded-3xl shadow-lg border-t-4 border-amber-700">
                 <i class="fa-solid fa-utensils text-amber-700 mb-3 text-xl"></i>
@@ -744,31 +756,32 @@ document.getElementById("ig-link-wanita").setAttribute(
 document.getElementById("ig-wanita").textContent =
 "@" + dataMempelai.wanita.instagram;
 
-//==============================
+// ==============================
 // DATA ACARA
-//==============================
+// ==============================
 
-const tanggal = dataMempelai.akad.tanggal;
-
-// Ambil hari
+// Tanggal utama (mengambil dari resepsi)
 document.getElementById("hari-acara").textContent =
-tanggal.split(",")[0];
+dataMempelai.resepsi.hari;
 
-// Tampilkan tanggal lengkap
 document.getElementById("tanggal-acara").textContent =
-tanggal.replace(",", "");
+dataMempelai.resepsi.tanggal;
 
 // Akad
+document.getElementById("akad-hari").textContent =
+dataMempelai.akad.hari;
+
+document.getElementById("akad-tanggal").textContent =
+dataMempelai.akad.tanggal;
+
 document.getElementById("akad-jam").textContent =
 dataMempelai.akad.jam;
 
 document.getElementById("akad-tempat").textContent =
 dataMempelai.akad.tempat;
 
-document.getElementById("akad-maps").setAttribute(
-"href",
-dataMempelai.akad.linkMaps
-);
+document.getElementById("akad-maps").href =
+dataMempelai.akad.linkMaps;
 
 // Resepsi
 document.getElementById("resepsi-jam").textContent =
@@ -777,10 +790,8 @@ dataMempelai.resepsi.jam;
 document.getElementById("resepsi-tempat").textContent =
 dataMempelai.resepsi.tempat;
 
-document.getElementById("resepsi-maps").setAttribute(
-"href",
-dataMempelai.resepsi.linkMaps
-);
+document.getElementById("resepsi-maps").href =
+dataMempelai.resepsi.linkMaps;
 
 document.getElementById("musik-source").src =
 dataMempelai.media.audioMusik;
