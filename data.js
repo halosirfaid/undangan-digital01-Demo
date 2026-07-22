@@ -70,7 +70,7 @@ const dataMempelai = {
         foto:"3.jpg",
         alt:"Foto Resepsi"
     }
-]
+],
 
     // 7. Data Kado Digital (Rekening & Alamat)
     kado: {
