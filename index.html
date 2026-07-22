@@ -744,7 +744,12 @@ function isiDataUndangan() {
 
   document.getElementById("halaman-sampul").style.backgroundImage =
 `linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url('${dataMempelai.media.fotoCover}')`;
-//==============================
+
+  document.getElementById("preloader-logo").textContent =
+dataMempelai.wanita.panggilan +
+" ♥ " +
+dataMempelai.pria.panggilan;
+  //==============================
 // Data Pria
 //==============================
 
@@ -904,18 +909,56 @@ document.getElementById("wa-konfirmasi").setAttribute(
   
 }
 
-  
+ function mulaiPreloader(){
+
+    let persen = 0;
+
+    const text = document.getElementById("loading-text");
+    const bar = document.getElementById("loading-bar");
+
+    const timer = setInterval(()=>{
+
+        persen++;
+
+        text.textContent = persen + "%";
+
+        bar.style.width = persen + "%";
+
+        if(persen>=100){
+
+            clearInterval(timer);
+
+            document.getElementById("preloader").style.opacity="0";
+
+            setTimeout(()=>{
+
+                document.getElementById("preloader").style.display="none";
+
+            },500);
+
+        }
+
+    },20);
+
+} 
     window.addEventListener("scroll", scrollReveal);
-window.addEventListener('load', () => {
+  window.addEventListener('load', () => {
 
     isiDataUndangan();
+
     tampilkanStory();
+
     tampilkanGaleri();
+
     ambilNamaTamu();
+
     muatUcapan();
+
     scrollReveal();
 
     new LuminousGallery(document.querySelectorAll(".galeri-item"));
+
+    mulaiPreloader();
 
 });
 </script>
