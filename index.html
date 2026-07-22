@@ -309,7 +309,7 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg" class="h-4 brightness-200">
                 <i class="fa-solid fa-rss rotate-90 text-amber-400 text-xl"></i> </div>
             <div>
-                   <i class="fa-solid fa-microchip text-amber-400 text-3xl mb-2 opacity-90"></i>                <p id="rek-mandiri" class="text-lg tracking-[0.2em] font-mono">1234 5678 9012</p>
+                   <i class="fa-solid fa-microchip text-amber-400 text-3xl mb-2 opacity-90"></i>                <p id="mandiri-an" class="text-lg tracking-[0.2em] font-mono">1234 5678 9012</p>
                 <p class="text-[10px] uppercase tracking-widest mt-2 opacity-80">Sirajuddin</p>
             </div>
             <button onclick="salinTeks('123456789012', 'Mandiri', this)" class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-lg text-[10px] font-bold border border-white/30 active:scale-95 transition-all">
@@ -324,7 +324,7 @@
             </div>
             <div>
                    <i class="fa-solid fa-microchip text-amber-400 text-3xl mb-2 opacity-90"></i>
-                <p id="rek-bca" class="text-lg tracking-[0.2em] font-mono">0987 6543 21</p>
+                <p id="bca-an" class="text-lg tracking-[0.2em] font-mono">0987 6543 21</p>
                 <p class="text-[10px] uppercase tracking-widest mt-2 opacity-80">Aulia Rahmah</p>
             </div>
             <button onclick="salinTeks('0987654321', 'BCA',this)" class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-lg text-[10px] font-bold border border-white/30 active:scale-95 transition-all">
@@ -356,10 +356,10 @@
                 <i class="fa-solid fa-gift text-white/50 text-xl"></i>
             </div>
             <div>
-                <p class="text-[11px] leading-relaxed font-semibold opacity-90 pr-10">Jl. Trans Kalimantan No. 123, Kuala Kapuas, Kapuas Murung
+                <p id="alamat-kado" class="text-[11px] leading-relaxed font-semibold opacity-90 pr-10">Jl. Trans Kalimantan No. 123, Kuala Kapuas, Kapuas Murung
                     
                 </p>
-                <p class="text-[10px] uppercase tracking-widest mt-2 opacity-80 italic">Penerima: Rara & Adi</p>
+                <p id="penerima-kado" class="text-[10px] uppercase tracking-widest mt-2 opacity-80 italic">Penerima: Rara & Adi</p>
             </div>
             <button onclick="salinTeks('Jl. Trans Kalimantan No. 123, Kuala Kapuas, Kapuas Murung', this)" class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-lg text-[10px] font-bold border border-white/30 active:scale-95 transition-all">
                 SALIN ALAMAT
@@ -368,7 +368,7 @@
 </div>
                <div class="mt-10 reveal">
     <p class="text-[10px] text-stone-500 uppercase tracking-widest mb-4">Sudah mengirim kado?</p>
-    <a href="https://wa.me/628875754371?text=Halo%20Rara%20%26%20Adi%2C%20saya%20sudah%20mengirimkan%20tanda%20kasih%20melalui%20Kado%20Digital.%20Terima%20kasih." 
+    <a <a id="wa-konfirmasi" href="https://wa.me/628875754371?text=Halo%20Rara%20%26%20Adi%2C%20saya%20sudah%20mengirimkan%20tanda%20kasih%20melalui%20Kado%20Digital.%20Terima%20kasih." 
        target="_blank" 
        class="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-full text-[11px] font-bold shadow-lg active:scale-95 transition-all">
         <i class="fa-brands fa-whatsapp text-lg"></i>
@@ -733,7 +733,32 @@ document.getElementById("maps-button").setAttribute(
 "href",
 dataMempelai.maps.tombolRute
 );
-  
+
+document.getElementById("rek-mandiri").textContent =
+dataMempelai.kado.mandiriNo;
+
+document.getElementById("mandiri-an").textContent =
+dataMempelai.kado.mandiriAn;  
+
+ document.getElementById("rek-bca").textContent =
+dataMempelai.kado.bcaNo;
+
+document.getElementById("bca-an").textContent =
+dataMempelai.kado.bcaAn;
+
+document.getElementById("alamat-kado").textContent =
+dataMempelai.kado.alamatKirim;
+
+document.getElementById("penerima-kado").textContent =
+"Penerima : " +
+dataMempelai.kado.penerimaPaket;  
+
+document.getElementById("wa-konfirmasi").href =
+"https://wa.me/" +
+dataMempelai.kado.NoWaKonfirmasi +
+"?text=" +
+encodeURIComponent(
+"Halo, saya sudah mengirimkan tanda kasih.");  
 }
 
   
