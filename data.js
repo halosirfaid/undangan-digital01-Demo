@@ -73,6 +73,8 @@ const dataMempelai = {
         bcaAn: "Hafizh",
         mandiriNo: "9876 5432 1234",
         mandiriAn: "Izah",
+        danaNo: "08123456789",
+        danaAn: "Hafizh",
         alamatKirim: "Jl. Pulau Kalimantan No. 000, Kapuas KUala, Tabunganen",
         penerimaPaket: "Hafiz & Hafizah",
         NoWaKonfirmasi: "6288242996791"
