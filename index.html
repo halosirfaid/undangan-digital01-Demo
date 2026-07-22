@@ -10,7 +10,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Undangan Pernikahan - Rara & Adi</title>
+ <title>Undangan Pernikahan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/luminous-lightbox/2.3.2/luminous-basic.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/luminous-lightbox/2.3.2/Luminous.min.js"></script>
@@ -113,10 +113,10 @@
 </head>
 <body class="bg-stone-50">
     <div id="halaman-sampul" class="fixed inset-0 z-[100] flex flex-col justify-center items-center text-center text-white p-6">
-        <img src="3.jpg" class="img-arch mb-4 shadow-2xl floating">
+      <img id="cover-foto" src="" class="img-arch mb-4 shadow-2xl floating">
         <h2 class="tracking-[0.3em] uppercase mb-2 text-[10px]">The Wedding of</h2>
-        <h1 class="text-5xl font-aesthetic text-amber-200 mb-2">Rara & Adi</h1>
-        <p class="text-xs tracking-[0.2em] mb-6">RABU, 15 APRIL 2026</p>
+      <h1 id="cover-nama" class="text-5xl font-aesthetic text-amber-200 mb-2"></h1>
+      <p id="cover-tanggal" class="text-xs tracking-[0.2em] mb-6"></p>
         
         <div class="bg-black/30 backdrop-blur-sm p-4 rounded-2xl mb-6 border border-white/20">
             <p class="text-[10px] italic mb-1 uppercase">Kepada Yth:</p>
@@ -608,13 +608,47 @@ function feedbackSalin(elemen, teksAsli) {
         });
     }
 
+function isiDataUndangan() {
+
+    //==========================
+    // Judul Browser
+    //==========================
+    document.title =
+        "Undangan Pernikahan - " +
+        dataMempelai.pria.panggilan +
+        " & " +
+        dataMempelai.wanita.panggilan;
+
+
+    //==========================
+    // Cover
+    //==========================
+    document.getElementById("cover-foto").src =
+        dataMempelai.media.fotoCover;
+
+    document.getElementById("cover-nama").innerHTML =
+        dataMempelai.wanita.panggilan +
+        " & " +
+        dataMempelai.pria.panggilan;
+
+    document.getElementById("cover-tanggal").innerHTML =
+        dataMempelai.akad.tanggal;
+
+}
+
+  
     window.addEventListener("scroll", scrollReveal);
-    window.addEventListener('load', () => {
-        ambilNamaTamu();
-        muatUcapan();
-        scrollReveal();
-        new LuminousGallery(document.querySelectorAll(".galeri-item"));
-    });
+window.addEventListener('load', () => {
+
+    isiDataUndangan();
+
+    ambilNamaTamu();
+    muatUcapan();
+    scrollReveal();
+
+    new LuminousGallery(document.querySelectorAll(".galeri-item"));
+
+});
 </script>
 
   </body>
