@@ -259,38 +259,13 @@
             <div class="text-center"><a id="maps-button" href="#" class="inline-block bg-amber-700 text-white px-8 py-3 rounded-full text-[10px] font-bold">PETUNJUK LOKASI</a></div>
         </section>
 <section id="galeri" class="py-20 px-6 bg-[#fffcf5]">
-    <div class="max-w-md mx-auto reveal">
-        <h2 class="text-4xl font-aesthetic text-center text-amber-700 mb-10">Galeri Kebahagiaan</h2>
-        
-        <div class="columns-2 gap-3 space-y-3 galeri-container">
-            <div class="reveal break-inside-avoid shadow-lg rounded-2xl overflow-hidden group">
-                <a href="1.jpg" class="galeri-item">
-                    <img src="1.jpg" alt="Foto Prewedding 1" class="w-full h-auto hover:scale-110 transition-transform duration-500 cursor-zoom-in"> </a>
-            </div>
-
-            <div class="reveal break-inside-avoid shadow-lg rounded-2xl overflow-hidden">
-                <a href="2.jpg" class="galeri-item">
-                    <img src="2.jpg" alt="Foto Prewedding 2" class="w-full h-auto hover:scale-110 transition-transform duration-500 cursor-zoom-in"></a>
-            </div>
-
-            <div class="reveal break-inside-avoid shadow-lg rounded-2xl overflow-hidden">
-                <a href="3.jpg" class="galeri-item">
-                    <img src="3.jpg" alt="Foto Prewedding 3" class="w-full h-auto hover:scale-110 transition-transform duration-500 cursor-zoom-in"></a>
-            </div>
-
-            <div class="reveal break-inside-avoid shadow-lg rounded-2xl overflow-hidden">
-                <a href="4.jpg" class="galeri-item">
-                    <img src="4.jpg" alt="Foto Prewedding 4" class="w-full h-auto hover:scale-110 transition-transform duration-500 cursor-zoom-in"></a>
-            </div>
-
-            <div class="reveal break-inside-avoid shadow-lg rounded-2xl overflow-hidden">
-                <a href="5.jpg" class="galeri-item">
-                    <img src="5.jpg" alt="Foto Prewedding 5" class="w-full h-auto hover:scale-110 transition-transform duration-500 cursor-zoom-in"></a>
-            </div>
+  <div class="max-w-md mx-auto reveal">
+        <h2 class="text-4xl font-aesthetic text-center text-amber-700 mb-10"> Galeri Kebahagiaan</h2>
+        <div id="galeri-container" class="columns-2 gap-3 space-y-3"></div>
     </div>
 </section>
-
-            <section id="kado" class="py-20 px-6 text-center bg-[#fffcf5]">
+          
+    <section id="kado" class="py-20 px-6 text-center bg-[#fffcf5]">
     <h2 class="text-4xl font-aesthetic text-amber-700 mb-2">Kado Digital</h2>
     <p class="text-[10px] text-stone-500 mb-10 tracking-[0.2em] uppercase px-4">Tanda Kasih</p>
 
@@ -667,6 +642,25 @@ function tampilkanStory() {
     `;
 
 }
+//====================================
+// GALERI
+//====================================
+
+function tampilkanGaleri(){
+
+    const container =
+    document.getElementById("galeri-container");
+    container.innerHTML = "";
+    dataMempelai.galeri.forEach(function(foto,index){
+
+        container.innerHTML += `
+        <div class="reveal break-inside-avoid shadow-lg rounded-2xl overflow-hidden group">
+            <a href="${foto}" class="galeri-item">
+               <img src="${foto}" alt="Galeri ${index+1}" class="w-full h-auto hover:scale-110 transition-transform duration-500 cursor-zoom-in"></a>
+        </div>
+        `;
+    });
+}  
 function isiDataUndangan() {
 
     //==========================
@@ -862,6 +856,7 @@ window.addEventListener('load', () => {
 
     isiDataUndangan();
     tampilkanStory();
+    tampilkanGaleri();
     ambilNamaTamu();
     muatUcapan();
     scrollReveal();
