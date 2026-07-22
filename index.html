@@ -595,11 +595,7 @@ function feedbackSalin(elemen, teksAsli) {
             else el.classList.remove("active");
         });
     }
-
-function isiDataUndangan() {
-
-
-  //====================================
+ //====================================
 // LOVE STORY
 //====================================
 
@@ -671,6 +667,8 @@ function tampilkanStory() {
     `;
 
 }
+function isiDataUndangan() {
+
     //==========================
     // Judul Browser
     //==========================
@@ -846,15 +844,15 @@ document.getElementById("penerima-kado").textContent =
 "Penerima : " +
 dataMempelai.kado.penerimaPaket;
 
-
-// Tombol WhatsApp
 document.getElementById("wa-konfirmasi").setAttribute(
-"href",
-"https://wa.me/" +
-dataMempelai.kado.NoWaKonfirmasi +
-"?text=" +
-encodeURIComponent(
-"Halo, saya sudah mengirimkan tanda kasih melalui Kado Digital."));  
+    "href",
+    "https://wa.me/" +
+    dataMempelai.kado.NoWaKonfirmasi +
+    "?text=" +
+    encodeURIComponent(
+        "Halo, saya sudah mengirimkan tanda kasih melalui Kado Digital."
+    )
+);
   
 }
 
