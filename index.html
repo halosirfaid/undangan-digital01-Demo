@@ -309,8 +309,9 @@
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg" class="h-4 brightness-200">
                 <i class="fa-solid fa-rss rotate-90 text-amber-400 text-xl"></i> </div>
             <div>
-                   <i class="fa-solid fa-microchip text-amber-400 text-3xl mb-2 opacity-90"></i>                <p id="mandiri-an" class="text-lg tracking-[0.2em] font-mono">1234 5678 9012</p>
-                <p class="text-[10px] uppercase tracking-widest mt-2 opacity-80">Sirajuddin</p>
+                   <i class="fa-solid fa-microchip text-amber-400 text-3xl mb-2 opacity-90"></i>  
+            <p id="rek-mandiri" class="text-lg tracking-[0.2em] font-mono">1234 5678 9012</p>
+            <p id="mandiri-an" class="text-[10px] uppercase tracking-widest mt-2 opacity-80"> Sirajuddin</p>
             </div>
             <button onclick="salinTeks('123456789012', 'Mandiri', this)" class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-lg text-[10px] font-bold border border-white/30 active:scale-95 transition-all">
                 SALIN NOMOR
@@ -324,8 +325,8 @@
             </div>
             <div>
                    <i class="fa-solid fa-microchip text-amber-400 text-3xl mb-2 opacity-90"></i>
-                <p id="bca-an" class="text-lg tracking-[0.2em] font-mono">0987 6543 21</p>
-                <p class="text-[10px] uppercase tracking-widest mt-2 opacity-80">Aulia Rahmah</p>
+               <p id="rek-bca"class="text-lg tracking-[0.2em] font-mono">0987 6543 21</p>
+              <p id="bca-an"class="text-[10px] uppercase tracking-widest mt-2 opacity-80">Aulia Rahmah</p>
             </div>
             <button onclick="salinTeks('0987654321', 'BCA',this)" class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-lg text-[10px] font-bold border border-white/30 active:scale-95 transition-all">
                 SALIN NOMOR
@@ -341,8 +342,8 @@
 
     <div class="mt-2">
         <i class="fa-solid fa-microchip text-amber-400 text-3xl mb-3 opacity-90 block"></i>
-        <p id="rek-dana" class="text-lg tracking-[0.2em] font-mono leading-none mb-2">0821 4997 1287</p>
-        <p class="text-[10px] uppercase tracking-widest opacity-80">Sirajuddin</p>
+        <p id="rek-dana" class="text-lg tracking-[0.2em] font-mono leading-none mb-2">082149971287</p>
+        <p id="dana-an"class="text-[10px] uppercase tracking-widest opacity-80">Sirajuddin</p>
     </div>
 
     <button onclick="salinTeks('082149971287', 'DANA',this)" class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-lg text-[10px] font-bold border border-white/30 active:scale-95 transition-all">
@@ -368,7 +369,7 @@
 </div>
                <div class="mt-10 reveal">
     <p class="text-[10px] text-stone-500 uppercase tracking-widest mb-4">Sudah mengirim kado?</p>
-    <a <a id="wa-konfirmasi" href="https://wa.me/628875754371?text=Halo%20Rara%20%26%20Adi%2C%20saya%20sudah%20mengirimkan%20tanda%20kasih%20melalui%20Kado%20Digital.%20Terima%20kasih." 
+    <a id="wa-konfirmasi" href="https://wa.me/628875754371?text=Halo%20Rara%20%26%20Adi%2C%20saya%20sudah%20mengirimkan%20tanda%20kasih%20melalui%20Kado%20Digital.%20Terima%20kasih." 
        target="_blank" 
        class="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-full text-[11px] font-bold shadow-lg active:scale-95 transition-all">
         <i class="fa-brands fa-whatsapp text-lg"></i>
@@ -734,31 +735,63 @@ document.getElementById("maps-button").setAttribute(
 dataMempelai.maps.tombolRute
 );
 
+//====================================
+// KADO DIGITAL
+//====================================
+
+// Mandiri
 document.getElementById("rek-mandiri").textContent =
 dataMempelai.kado.mandiriNo;
 
 document.getElementById("mandiri-an").textContent =
-dataMempelai.kado.mandiriAn;  
+dataMempelai.kado.mandiriAn;
 
- document.getElementById("rek-bca").textContent =
+
+// BCA
+document.getElementById("rek-bca").textContent =
 dataMempelai.kado.bcaNo;
 
 document.getElementById("bca-an").textContent =
 dataMempelai.kado.bcaAn;
 
+
+// DANA (jika dipakai)
+if(document.getElementById("rek-dana")){
+
+    document.getElementById("rek-dana").textContent =
+    dataMempelai.kado.danaNo;
+
+}
+
+if(document.getElementById("dana-an")){
+
+    document.getElementById("dana-an").textContent =
+    dataMempelai.kado.danaAn;
+
+}
+
+
+// Alamat Kirim
 document.getElementById("alamat-kado").textContent =
 dataMempelai.kado.alamatKirim;
 
+
+// Nama Penerima
 document.getElementById("penerima-kado").textContent =
 "Penerima : " +
-dataMempelai.kado.penerimaPaket;  
+dataMempelai.kado.penerimaPaket;
 
-document.getElementById("wa-konfirmasi").href =
+
+// Tombol WhatsApp
+document.getElementById("wa-konfirmasi").setAttribute(
+"href",
 "https://wa.me/" +
 dataMempelai.kado.NoWaKonfirmasi +
 "?text=" +
 encodeURIComponent(
-"Halo, saya sudah mengirimkan tanda kasih.");  
+"Halo, saya sudah mengirimkan tanda kasih melalui Kado Digital."
+)
+);  
 }
 
   
