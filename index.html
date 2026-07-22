@@ -429,7 +429,7 @@
 </footer>
     </div>
 
-    <audio id="musik" loop><source src="LaguNikah.mp3" type="audio/mpeg"></audio>
+    <audio id="musik" loop><source id="musik-source" src="" type="audio/mpeg"></audio>
 <script>
     
     function salinTeks(nomor, label, elemen) {
@@ -461,7 +461,7 @@ function feedbackSalin(elemen, teksAsli) {
 
     // 1. SETTING UTAMA (Ganti idUndangan setiap ada pesanan baru)
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxYIouWgN8_HH1uYSFlHP7d9JqSIInqntBH3x5EuuM9nqv_d_AU5cczyzr4vmbo1pFToA/exec';
-    const idUndangan = 'devi-ehsan'; // <-- Cukup ganti ini saja untuk klien baru!
+    const idUndangan = dataMempelai.idUndangan;
     
     const audio = document.getElementById('musik');
     let isAutoScrolling = false;
@@ -585,7 +585,7 @@ function feedbackSalin(elemen, teksAsli) {
     }
 
     // 5. Countdown (Rara & Adi 15 April 2026)
-    const target = new Date("April 15, 2026 08:00:00").getTime();
+    const target = new Date(dataMempelai.tglCountdown).getTime();
     setInterval(() => {
         const sisa = target - new Date().getTime();
         document.getElementById("days").innerText = Math.floor(sisa / (1000 * 60 * 60 * 24));
@@ -629,6 +629,8 @@ function isiDataUndangan() {
     document.getElementById("cover-tanggal").innerHTML =
         dataMempelai.akad.tanggal;
 
+  document.getElementById("halaman-sampul").style.backgroundImage =
+`linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url('${dataMempelai.media.fotoCover}')`;
 //==============================
 // Data Pria
 //==============================
@@ -715,7 +717,11 @@ document.getElementById("resepsi-maps").setAttribute(
 "href",
 dataMempelai.resepsi.linkMaps
 );
-  
+
+document.getElementById("musik-source").src =
+dataMempelai.media.audioMusik;
+
+audio.load();  
 }
 
   
