@@ -609,9 +609,32 @@ function feedbackSalin(elemen, teksAsli) {
     }
 
 function isiDataUndangan() {
+  
+    //==========================
+    // Judul Browser
+    //==========================
+    document.title =
+        "Undangan Pernikahan - " +
+        dataMempelai.pria.panggilan +
+        " & " +
+        dataMempelai.wanita.panggilan;
 
 
-//==============================
+    //==========================
+    // Cover
+    //==========================
+    document.getElementById("cover-foto").src =
+        dataMempelai.media.fotoCover;
+
+    document.getElementById("cover-nama").innerHTML =
+        dataMempelai.wanita.panggilan +
+        " & " +
+        dataMempelai.pria.panggilan;
+
+    document.getElementById("cover-tanggal").innerHTML =
+        dataMempelai.akad.tanggal;
+
+  //==============================
 // Data Pria
 //==============================
 
@@ -655,31 +678,6 @@ dataMempelai.wanita.linkInstagram;
 
 document.getElementById("ig-wanita").innerHTML =
 "@" + dataMempelai.wanita.instagram;
-  
-    //==========================
-    // Judul Browser
-    //==========================
-    document.title =
-        "Undangan Pernikahan - " +
-        dataMempelai.pria.panggilan +
-        " & " +
-        dataMempelai.wanita.panggilan;
-
-
-    //==========================
-    // Cover
-    //==========================
-    document.getElementById("cover-foto").src =
-        dataMempelai.media.fotoCover;
-
-    document.getElementById("cover-nama").innerHTML =
-        dataMempelai.wanita.panggilan +
-        " & " +
-        dataMempelai.pria.panggilan;
-
-    document.getElementById("cover-tanggal").innerHTML =
-        dataMempelai.akad.tanggal;
-
 }
 
   
