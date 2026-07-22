@@ -648,19 +648,30 @@ function tampilkanStory() {
 
 function tampilkanGaleri(){
 
-    const container =
-    document.getElementById("galeri-container");
+    const container = document.getElementById("galeri-container");
+
     container.innerHTML = "";
-    dataMempelai.galeri.forEach(function(foto,index){
+
+    dataMempelai.galeri.forEach(function(item,index){
 
         container.innerHTML += `
-        <div class="reveal break-inside-avoid shadow-lg rounded-2xl overflow-hidden group">
-            <a href="${foto}" class="galeri-item">
-               <img src="${foto}" alt="Galeri ${index+1}" class="w-full h-auto hover:scale-110 transition-transform duration-500 cursor-zoom-in"></a>
-        </div>
+            <div class="reveal break-inside-avoid shadow-lg rounded-2xl overflow-hidden group">
+
+                <a href="${item.foto}" class="galeri-item">
+
+                    <img
+                        src="${item.foto}"
+                        alt="${item.alt}"
+                        class="w-full h-auto hover:scale-110 transition-transform duration-500 cursor-zoom-in">
+
+                </a>
+
+            </div>
         `;
+
     });
-}  
+
+}
 function isiDataUndangan() {
 
     //==========================
