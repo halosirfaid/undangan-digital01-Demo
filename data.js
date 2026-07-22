@@ -89,6 +89,11 @@ resepsi: {
         fotoResepsi: "3.jpg",
         audioMusik: "lagupenganti.mp3"
     },
+    preloader:{
+    tampil:true,
+    teks:"Memuat Undangan..."
+
+    },
       story: {
         bulanTahun1: "JANUARI 2023",
         pesanWanita1: "Ingat nggak waktu pertama kali kita nggak sengaja duduk sebelahan di cafe? 🥰",
