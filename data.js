@@ -33,23 +33,25 @@ const dataMempelai = {
         linkInstagram: "https://instagram.com/-hazneul"
     },
 
-    // 3. Data Acara Akad Nikah
-    akad: {
-        tanggal: "Kamis, 23 Juli 2026",
-        jam: "09.00 - 12.00 WITA",
-        tempat: "Desa Tabunganen, Kapuas Kuala",
-        foto: "5.jpg",
-        linkMaps: "https://maps.app.goo.gl/rgBJiHrocXKDPpLH8"
-    },
+   // 3. Data Acara Akad Nikah
+akad: {
+    hari: "Kamis",
+    tanggal: "23 Juli 2026",
+    jam: "09.00 - 12.00 WITA",
+    tempat: "Desa Tabunganen, Kapuas Kuala",
+    foto: "5.jpg",
+    linkMaps: "https://maps.app.goo.gl/rgBJiHrocXKDPpLH8"
+},
 
-    // 4. Data Acara Resepsi
-    resepsi: {
-        jam: "07.00 - Selesai",
-        tempat: "Gedung Khusus Pejabat, Kapuas Kuala ",
-        foto: "4.jpg",
-        linkMaps: "https://maps.app.goo.gl/rgBJiHrocXKDPpLH8"
-    },
-
+// 4. Data Acara Resepsi
+resepsi: {
+    hari: "Sabtu",
+    tanggal: "25 Juli 2026",
+    jam: "07.00 - Selesai",
+    tempat: "Gedung Khusus Pejabat, Kapuas Kuala",
+    foto: "4.jpg",
+    linkMaps: "https://maps.app.goo.gl/rgBJiHrocXKDPpLH8"
+},
     // 5. Data Peta (Maps Embed)
     maps: {
         iframeUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d24424.740322585934!2d114.39576032067937!3d-3.423512263910262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de6a7b06dd63de1%3A0x686c088a43edcb95!2sMasjid%20Nurul%20Iman!5e0!3m2!1sid!2sid!4v1784176333490!5m2!1sid!2sid",
