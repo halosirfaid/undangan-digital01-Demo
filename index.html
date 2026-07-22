@@ -200,19 +200,11 @@
         </div>
     </div>
 </section>
-       <section class="py-20 px-6 bg-[#fffcf5]">
-            <h2 class="text-4xl font-aesthetic text-center text-amber-700 mb-10">Our Love Story</h2>
-            <div class="max-w-md mx-auto space-y-6 reveal">
-                <div class="chat-bubble shadow-md rounded-2xl p-5 mb-6 border-l-4 border-amber-700 reveal">
-                    <p class="text-xs font-bold text-amber-700 mb-1">2023 - Pertemuan Pertama</p>
-                    <p class="text-[11px] text-stone-600">"Semuanya bermula di sebuah cafe kecil, kita tidak sengaja duduk berdekatan..."</p>
-                </div>
-                <div class="chat-bubble shadow-md rounded-2xl p-5 mb-6 border-l-4 border-amber-700 reveal" style="margin-left: auto; background: #fef3c7;">
-                    <p class="text-xs font-bold text-amber-700 mb-1">2024 - Menjalin Komitmen</p>
-                    <p class="text-[11px] text-stone-600">"Setelah setahun mengenal, kami memutuskan untuk melangkah ke jenjang yang lebih serius."</p>
-                </div>
-            </div>
-        </section>           
+    <section class="py-20 px-6 bg-[#fffcf5]">
+    <h2 class="text-4xl font-aesthetic text-center text-amber-700 mb-10"> Our Love Story</h2>
+    <div id="story-container" class="max-w-md mx-auto space-y-6 reveal">
+    </div>
+</section>         
             <section id="acara" class="py-20 px-6 bg-[#fffcf5] text-center">
     <div class="max-w-md mx-auto reveal">
         <h2 class="text-4xl font-aesthetic text-amber-700 mb-2">Acara Pernikahan</h2>
@@ -605,7 +597,80 @@ function feedbackSalin(elemen, teksAsli) {
     }
 
 function isiDataUndangan() {
-  
+
+
+  //====================================
+// LOVE STORY
+//====================================
+
+function tampilkanStory() {
+
+    const story = dataMempelai.story;
+
+    const container = document.getElementById("story-container");
+
+    container.innerHTML = "";
+
+    // Cerita Pertama
+    container.innerHTML += `
+        <div class="chat-bubble shadow-md rounded-2xl p-5 mb-6 border-l-4 border-amber-700 reveal">
+            <p class="text-xs font-bold text-amber-700 mb-1">
+                ${story.bulanTahun1}
+            </p>
+
+            <p class="text-[11px] text-stone-600">
+                "${story.pesanWanita1}"
+            </p>
+
+            <p class="text-[10px] text-stone-400 mt-2">
+                ${story.waktuWanita1}
+            </p>
+        </div>
+    `;
+
+    // Cerita Kedua
+    container.innerHTML += `
+        <div class="chat-bubble shadow-md rounded-2xl p-5 mb-6 border-l-4 border-amber-700 reveal"
+        style="margin-left:auto;background:#fef3c7;">
+
+            <p class="text-xs font-bold text-amber-700 mb-1">
+                ${story.bulanTahun2}
+            </p>
+
+            <p class="text-[11px] text-stone-600">
+                "${story.pesanPria1}"
+            </p>
+
+            <p class="text-[10px] text-stone-400 mt-2">
+                ${story.waktuPria1}
+            </p>
+
+        </div>
+    `;
+
+    // Cerita Ketiga (dengan foto)
+    container.innerHTML += `
+        <div class="chat-bubble shadow-md rounded-2xl p-5 mb-6 border-l-4 border-amber-700 reveal">
+
+            <p class="text-xs font-bold text-amber-700 mb-1">
+                ${story.bulanTahun3}
+            </p>
+
+            <img src="${story.fotoPertunangan}"
+                class="rounded-xl my-3 w-full">
+
+            <p class="text-[11px] text-stone-600">
+                "${story.pesanWanita2}"
+            </p>
+
+            <p class="text-[10px] text-stone-400 mt-2">
+                ${story.waktuWanita2}
+            </p>
+
+        </div>
+    `;
+
+}
     //==========================
     // Judul Browser
     //==========================
@@ -789,9 +854,8 @@ document.getElementById("wa-konfirmasi").setAttribute(
 dataMempelai.kado.NoWaKonfirmasi +
 "?text=" +
 encodeURIComponent(
-"Halo, saya sudah mengirimkan tanda kasih melalui Kado Digital."
-)
-);  
+"Halo, saya sudah mengirimkan tanda kasih melalui Kado Digital."));  
+  
 }
 
   
@@ -799,7 +863,7 @@ encodeURIComponent(
 window.addEventListener('load', () => {
 
     isiDataUndangan();
-
+    tampilkanStory();
     ambilNamaTamu();
     muatUcapan();
     scrollReveal();
