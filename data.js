@@ -57,15 +57,20 @@ const dataMempelai = {
     },
 
     // 6. Data Galeri Foto untuk Status WA / Slide
-    galeri: [
-        "1.jpg",
-        "2.jpg",
-        "3.jpg",
-        "4.jpg",
-        "5.jpg",
-        "4.jpg",
-        "3.jpg" 
-    ],
+    galeri:[
+    {
+        foto:"1.jpg",
+        alt:"Foto Prewedding 1"
+    },
+    {
+        foto:"2.jpg",
+        alt:"Foto Akad"
+    },
+    {
+        foto:"3.jpg",
+        alt:"Foto Resepsi"
+    }
+]
 
     // 7. Data Kado Digital (Rekening & Alamat)
     kado: {
