@@ -448,7 +448,16 @@ class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-stone
 
     <audio id="musik" loop><source id="musik-source" src="" type="audio/mpeg"></audio>
 <script>
-    
+
+window.onerror = function(pesan, file, baris){
+
+    alert(
+        "ERROR : " + pesan +
+        "\n\nBaris : " + baris
+    );
+
+};
+  
     function salinTeks(nomor, label, elemen) {
     const teksAsli = elemen.innerText;
     
@@ -955,10 +964,10 @@ document.getElementById("wa-konfirmasi").setAttribute(
     muatUcapan();
 
     scrollReveal();
-
-    new LuminousGallery(document.querySelectorAll(".galeri-item"));
-
     mulaiPreloader();
+
+//new LuminousGallery(document.querySelectorAll(".galeri-item"));
+    
 
 });
 </script>
