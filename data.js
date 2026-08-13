@@ -87,7 +87,7 @@ resepsi: {
         fotoNotif: "5.jpg",
         fotoAkad: "2.jpg",
         fotoResepsi: "3.jpg",
-        audioMusik: "lagupenganti.mp3"
+        audioMusik: "lagupengantin.mp3"
     },
     preloader:{
     tampil:true,
